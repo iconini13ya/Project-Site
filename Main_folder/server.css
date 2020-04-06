@@ -1,0 +1,38 @@
+.Logo{
+    margin: 20px !important;
+}
+.Name_and_progbar{
+    margin: 20px !important;
+}
+
+.Name_of_PD{
+    width: 100%;
+    margin: 20px !important;
+    font-family: monospace;
+    font-size: 20px;
+    font-weight: 800;
+}
+.progress{
+    width: 100%;
+    margin: 20px !important;
+}
+.Nav_Posts{
+    margin-top: 20px;
+}
+.Posts{
+    margin-left: 20px;
+}
+.nav{
+    background-color: black;
+    border-radius: 5px;
+}
+.nav-item{
+    margin: 10px;
+}
+.btn-primary{
+    width: 100%;
+}
+.AboutTeam_Site{
+    background-color: black;
+    margin-top: 20px;
+}

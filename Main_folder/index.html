@@ -2,16 +2,58 @@
 <html lang="ru">
 <head>
     <title>Главная</title>
-    <link rel="shortcut icon" type="image/png" href="/Images/Favicon.png"/>
+    <link rel="shortcut icon" type="image/png" href="Images/Favicon.png"/>
     <meta charset="utf-8" />
 
-    <link href="styles.css" rel="stylesheet" type="text/css">
+    <link href="server.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="bootstrap-4.4.1-dist/css/bootstrap.min.css">
 </head>
-<body>
+<body class="container-fluid">
     <div class="container-fluid">
-        <div  >Главная</div> <img src="Images/Logo.png" alt="Logo" class="rounded-circle">
-        <script src="bootstrap-4.4.1-dist/js/bootstrap.min.js"></script> 
+        
+    <div class="row">
+        <div class="col-md-auto text-center Logo" >
+            <img src="Images/Logo.png" alt="Logo" class="rounded-circle">
+        </div>
+        <div class="col  Name_and_progbar" >
+            <div class="row container-fluid">
+                <div class="text-center Name_of_PD">
+                    Maya, 3Dmax, Unity для инженерных задач с использованием технологий AR, VR
+                </div>
+                
+            </div>
+            <div class="row container-fluid">
+                <div class="progress">
+                    <div class="progress-bar" role="progressbar" style="width: 50%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">50%</div>
+                  </div>
+            </div>
+        </div>
     </div>
+    <div class="row Nav_Posts" >
+        <div class="col-md-auto" >
+            <ul class="nav text-center  flex-column">
+                <li class="nav-item" >
+                  <a class="btn btn-primary btn-lg" href="/Theme">Тема проекта</a>
+                </li>
+                <li class="nav-item">
+                  <a class="btn btn-primary btn-lg" href="/Quest">Задание на проект</a>
+                </li>
+                <li class="nav-item">
+                  <a class="btn btn-primary btn-lg" href="/Team">Список участников</a>
+                </li>
+              </ul>
+        </div>
+        <div class="col Posts">
+            Posts
+        </div>
+    </div>
+    <div class="row AboutTeam_Site">
+        <div class="col">
+        <div class="row container-fluid">Успехи итд</div>
+        <div class="row container-fluid">О сайте</div>
+        </div>
+    </div>
+    </div>
+    <script src="bootstrap-4.4.1-dist/js/bootstrap.min.js"></script> 
 </body>
 <html>
