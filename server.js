@@ -27,7 +27,7 @@ function getMySQLConnection() {
 /// 
 /// To get collection of person saved in MySQL database.
 ///
-app.get('', function(req, res) {
+app.get('/', function(req, res) {
   
 	// Connect to MySQL database.
 	var connection = getMySQLConnection();
@@ -42,7 +42,7 @@ app.get('', function(req, res) {
             }
     
           });
-  res.sendfile('hi');       
+  res.sendfile('Main_folder/Main.html');       
 	// Close the MySQL connection
 	connection.end();
 });
