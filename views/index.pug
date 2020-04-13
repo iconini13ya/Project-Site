@@ -1,0 +1,52 @@
+doctype html
+html(lang="ru")
+    head
+        
+        title Проектная деятельность
+        meta(charset="utf-8")
+        link(rel="shortcut icon" type="image/png" href="Images/Favicon.png")
+        link(href="server.css" rel="stylesheet" type="text/css")
+        link(rel="stylesheet" href="bootstrap-4.4.1-dist/css/bootstrap.min.css")
+    body.container-fluid
+        div.container-fluid
+            div.row
+                div(class="col-md-auto text-center Logo")
+                    img(src="Images/Logo.png" alt="Logo" class="rounded-circle")
+                div(class="col  Name_and_progbar")
+                    div(class="row container-fluid")
+                        div(class="text-center Name_of_PD") Maya, 3Dmax, Unity для инженерных задач с использованием технологий AR, VR
+                    div(class="row container-fluid")
+                        div.progress
+                            div(class="progress-bar" role="progressbar" style="width: 50%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100") 50%
+            div(class="row Nav_Posts")
+                div(class="col-md-auto")
+                    ul(class="nav text-center  flex-column")
+                        li(class="nav-item")
+                            a(class="btn btn-primary btn-lg" href="/Theme") Тема проекта
+                        li(class="nav-item")
+                            a(class="btn btn-primary btn-lg" href="/Quest") Задание на проект
+                        li(class="nav-item")
+                            a(class="btn btn-primary btn-lg" href="/Team") Список участников
+                div(class="col text-center Posts")
+                    div Добавить запись
+                    each post in toRenderPosts 
+                        div(class="renderedPosts container-fluid")
+                            div(class="row")
+                                div(class="col col-md-auto")
+                                    img(src="Images/Logo.png" alt="Logo" class="rounded-circle")
+                                div(class="col")
+                                    div(class="row Author col-md-auto") #{post.author}
+                                    div(class="row col-md-auto") #{post.date}
+                                    div(class="row postContent container-fluid col-md-auto") #{post.content}
+                            div(class="row divpostimg")
+                                img(src="Images/Logo.png" class="rounded-circle rounded mx-auto d-block img-fluid postimg")
+            div(class="row AboutTeam_Site")
+                .col
+                    div(class="row container-fluid AddInfo")
+                        a(class="col btn btn-primary btn-lg text-center AddInfoItem" href="/Partners") Партнеры
+                        a(class="col btn btn-primary btn-lg text-center AddInfoItem" href="/Grands") Гранды
+                        a(class="col btn btn-primary btn-lg text-center AddInfoItem" href="/Git") Ссылка на гит проекта
+                    div(class="row container-fluid AboutSite")
+                        div(class="col") Сайт подготовлен для отчетности по проектной деятельности <br>Яранцевым Владимиром Андреевичем
+                        div(class="col text-right") © 2020 Московский политехнический университет
+        script(src="bootstrap-4.4.1-dist/js/bootstrap.min.js")

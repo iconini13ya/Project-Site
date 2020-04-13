@@ -19,7 +19,7 @@ function getMySQLConnection() {
 ///
 /// Use pug as templating engine. Pug is renamed jade.
 ///
-// app.set('view engine', 'pug');
+app.set('view engine', 'pug');
 
 ///
 /// HTTP Method	: GET
@@ -33,16 +33,18 @@ app.get('/', function(req, res) {
 	var connection = getMySQLConnection();
 	connection.connect();
 	// Do the query to get data.
-	connection.query('SELECT * FROM pd.posts;', function(error, result, fields){
-            if (error){
-              console.log(error);
-            }
+	connection.query('SELECT * FROM test.posts;', function(error, result, fields){
+            if (error){console.log(error);}
             else {
-              console.log(result);
+              // const image=result
+              // // var bufferBase64 = new Buffer( image[0].img, 'binary' ).toString('base64');
+              // // var imgsrc="data:image/jpeg;" + bufferBase64;
+              // // console.log(imgsrc);
+              res.render("index", {toRenderPosts:result}); 
             }
     
           });
-  res.sendfile('Main_folder/Main.html');       
+  // res.render("index", {})       
 	// Close the MySQL connection
 	connection.end();
 });
