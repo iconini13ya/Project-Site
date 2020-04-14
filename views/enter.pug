@@ -5,7 +5,7 @@ html(lang="ru")
         title Проектная деятельность
         meta(charset="utf-8")
         link(rel="shortcut icon" type="image/png" href="Images/Favicon.png")
-        link(href="server.css" rel="stylesheet" type="text/css")
+        link(href="enter.css" rel="stylesheet" type="text/css")
         link(rel="stylesheet" href="bootstrap-4.4.1-dist/css/bootstrap.min.css")
     body.container-fluid
         div.container-fluid
@@ -18,39 +18,37 @@ html(lang="ru")
                     div(class="row container-fluid")
                         div.progress
                             div(class="progress-bar" role="progressbar" style="width: 50%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100") 50%
-                if Auth 
-                    div(class="col col-md-auto Auth")
-                        a(class="btn btn-primary btn-lg" href="/Enter") Вход
-                else 
-                    div(class="col col-md-auto Auth")
-                        a(class="btn btn-primary btn-lg" href="/Enter") Вход
-                    div(class="col col-md-auto Auth")
-                        div(class="row")
-                            img(src="Images/Logo.png" alt="Logo" class="rounded-circle")
-                        div(class="row")
-                            div #{User.name} #{User.surname}
             div(class="row Nav_Posts")
                 div(class="col-md-auto")
                     ul(class="nav text-center  flex-column")
+                        li(class="nav-item")
+                            a(class="btn btn-primary btn-lg" href="/") На главную
                         li(class="nav-item")
                             a(class="btn btn-primary btn-lg" href="/Theme") Тема проекта
                         li(class="nav-item")
                             a(class="btn btn-primary btn-lg" href="/Quest") Задание на проект
                         li(class="nav-item")
                             a(class="btn btn-primary btn-lg" href="/Team") Список участников
-                div(class="col text-center Posts")
-                    each post in toRenderPosts 
-                        div(class="renderedPosts container-fluid")
-                            div(class="row")
-                                div(class="col col-md-auto")
-                                    img(src="Images/Logo.png" alt="Logo" class="rounded-circle")
-                                div(class="col")
-                                    div(class="row Author col-md-auto") #{post.author}
-                                    div(class="row col-md-auto") #{post.date}
-                                    div(class="row postContent container-fluid col-md-auto") #{post.content}
-                            div(class="row divpostimg") 
-                                - var imgclass = "data:image/png;base64,"+ Myimg64
-                                img(src=imgclass class="rounded-circle rounded mx-auto d-block img-fluid postimg")
+                div(class="col Posts text-center")
+                    form(action="/loginin" method="get")
+                        div(class="row") 
+                            div(class="col enter container-fluid text-center") Вход
+                        div(class="row justify-content-center logrow")
+                            div(class="col-1 ") Логин:  
+                            div(class="col col-md-auto")
+                                input(type="text" name="login")
+                        div(class="row justify-content-center passrow")
+                            div(class="col-1") Пароль:
+                            div(class="col col-md-auto") 
+                                input(type="text" name="password")
+                        div(class="row justify-content-center btnenter")
+                            div(class="col col-md-auto")
+                                button(class="btn btn-primary btn-lg" type="submit") Войти
+                        if badLogin
+                            
+                        else
+                            div(class="row justify-content-center btnenter")
+                                div(class="col col-md-auto wrongpass") Неправильный логин или пароль
             div(class="row AboutTeam_Site")
                 .col
                     div(class="row container-fluid AddInfo")

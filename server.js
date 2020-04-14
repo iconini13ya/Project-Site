@@ -1,8 +1,10 @@
 
 var express = require('express');
 var mysql = require('mysql2');
-
+var fs = require('fs');
 var app = express();
+var Auth=true;
+var badLogin=true;
 app.use(express.static('Main_folder'));
 ///
 ///	Create connection to MySQL database server.
@@ -28,7 +30,6 @@ app.set('view engine', 'pug');
 /// To get collection of person saved in MySQL database.
 ///
 app.get('/', function(req, res) {
-  
 	// Connect to MySQL database.
 	var connection = getMySQLConnection();
 	connection.connect();
@@ -36,11 +37,39 @@ app.get('/', function(req, res) {
 	connection.query('SELECT * FROM test.posts;', function(error, result, fields){
             if (error){console.log(error);}
             else {
+                          let buff = new Buffer.from(result[0].img, 'base64');
+                          
+                          
+
+                          // console.log('Base64 image data converted to file: stack-abuse-logo-out.png');
+              // var blob = new Blob([result[0].img])
+              // let buffer = Buffer.from(result[0].img);
+              // let arraybuffer = Uint8Array.from(buffer).buffer;
+              // Mycanvas = new Canvas
+              // console.log(imgsrc);
+              // let MyUrl = new URL.createObjectURL(arraybuffer);
+              // console.log(MyUrl);
+              // var imageBuffer = result.file.buffer;
+              // var imageName = 'public/images/map.png';
+
+              // fs.createWriteStream(imageName).write(imageBuffer);
+              // console.log(imageUrl);
               // const image=result
-              // // var bufferBase64 = new Buffer( image[0].img, 'binary' ).toString('base64');
-              // // var imgsrc="data:image/jpeg;" + bufferBase64;
-              // // console.log(imgsrc);
-              res.render("index", {toRenderPosts:result}); 
+            //   let base64Image = result[0].img.split(';base64,').pop();
+            //   fs.writeFile('image.png', base64Image, {encoding: 'base64'}, function(err) {
+            //     console.log('File created');
+            // });
+            // var base64Data = result[0].img.replace(/^data:image\/png;base64,/, "");
+
+            // require("fs").writeFile("out.png", base64Data, 'base64', function(err) {
+            // console.log(err);
+            // });
+                // var bufferBase64 = new Buffer.from( result[0].img, 'binary' ).toString('base64');
+                // require("fs").writeFile("out.png", bufferBase64, "binary", function(err) {
+                //   console.log(err); // writes out file without error, but it's not a valid image
+                // });
+              // console.log(imgsrc);
+              res.render("index", {toRenderPosts:result, Myimg64:buff, Auth}); 
             }
     
           });
@@ -49,6 +78,34 @@ app.get('/', function(req, res) {
 	connection.end();
 });
 //
+
+app.get("/Enter",function(req,res){
+  res.render("enter",{badLogin})
+})
+
+app.get("/loginin",function(req,res){
+  var connection = getMySQLConnection();
+	connection.connect();
+  connection.query("SELECT * FROM test.users WHERE login = "+`"`+req.query.login.toString()+`"`+" AND password = "+`"`+ req.query.password.toString()+`"`+";", function(error, result, fields){
+  if (result[0]==null){
+      badLogin=false;
+      res.render("enter",{badLogin})
+    }
+  else{
+      Auth=false;
+      // connection.query('SELECT * FROM test.posts;', function(error, result, fields){
+      //   if (error){console.log(error);}
+      //   else {
+      //     let buff = new Buffer.from(result[0].img, 'base64');
+      //     res.render("index", {toRenderPosts:result, Myimg64:buff, Auth, User:result});
+      //         }
+      // });
+    }
+  });
+
+connection.end();
+});
+
 app.listen(3000, function () {
   console.log('listening on port', 3000);
 });

@@ -1,0 +1,91 @@
+.Logo{
+    margin: 20px !important;
+}
+.Name_and_progbar{
+    margin: 20px !important;
+}
+
+.Name_of_PD{
+    width: 100%;
+    margin: 20px !important;
+    font-family: monospace;
+    font-size: 20px;
+    font-weight: 800;
+}
+.progress{
+    width: 100%;
+    margin: 20px !important;
+}
+.Nav_Posts{
+    margin-top: 20px;
+}
+.Posts{
+    margin-left: 20px;
+    background-color: #edeef0;
+}
+.nav{
+    background-color: black;
+    border-radius: 5px;
+}
+.nav-item{
+    margin: 10px;
+}
+.btn-primary{
+    width: 100%;
+}
+.AboutTeam_Site{
+    background-color: black;
+    margin-top: 20px;
+}
+.AboutSite{
+    color: #5d5d5d;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+.AddInfoItem{
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+.renderedPosts{
+    margin-top: 30px;
+    margin-bottom: 30px;
+    background-color: white;
+    padding: 20px 10px 20px 10px;
+}
+.Author{
+    color:#2a5885
+}
+.postContent{
+   margin-top:20px;
+   word-break: break-all;
+}
+.postimg{
+    max-width:1000px;
+}
+.divpostimg{
+    margin-left: 20px !important;
+    margin-right:20px !important;
+    margin-top:20px !important;
+}
+.Auth{
+    margin-top: 40px;
+}
+.enter{
+    font-size: 50px;
+}
+.btnenter{
+    margin-top: 20px;
+}
+.passrow{
+    margin-top:20px;
+}
+.logrow{
+    margin-top:20px;
+}
+.wrongpass{
+    font-size: 20px;
+    color:red;
+    margin:20px 0px 20px 0px
+}
