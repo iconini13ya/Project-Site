@@ -5,6 +5,7 @@ var fs = require('fs');
 var app = express();
 var Auth=true;
 var badLogin=true;
+var usersMass;
 app.use(express.static('Main_folder'));
 ///
 ///	Create connection to MySQL database server.
@@ -37,7 +38,7 @@ app.get('/', function(req, res) {
 	connection.query('SELECT * FROM test.posts;', function(error, result, fields){
             if (error){console.log(error);}
             else {
-                          let buff = new Buffer.from(result[0].img, 'base64');
+            let buff = new Buffer.from(result[0].img, 'base64');
                           
                           
 
@@ -87,23 +88,25 @@ app.get("/loginin",function(req,res){
   var connection = getMySQLConnection();
 	connection.connect();
   connection.query("SELECT * FROM test.users WHERE login = "+`"`+req.query.login.toString()+`"`+" AND password = "+`"`+ req.query.password.toString()+`"`+";", function(error, result, fields){
+    usersMass=result;
   if (result[0]==null){
       badLogin=false;
       res.render("enter",{badLogin})
     }
-  else{
-      Auth=false;
-      // connection.query('SELECT * FROM test.posts;', function(error, result, fields){
-      //   if (error){console.log(error);}
-      //   else {
-      //     let buff = new Buffer.from(result[0].img, 'base64');
-      //     res.render("index", {toRenderPosts:result, Myimg64:buff, Auth, User:result});
-      //         }
-      // });
-    }
   });
 
 connection.end();
+var connection2 = getMySQLConnection();
+connection2.connect();
+Auth=false;
+connection2.query('SELECT * FROM test.posts;', function(error, resultposts, fields){
+if (error){console.log(error);}
+else {
+    res.render("loggined",{toRenderPosts:resultposts, Auth, User:usersMass});
+    }
+    
+      });
+      connection2.end();
 });
 
 app.listen(3000, function () {
