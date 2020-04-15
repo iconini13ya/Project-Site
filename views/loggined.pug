@@ -26,7 +26,8 @@ html(lang="ru")
                         div(class="row")
                             img(src="Images/Logo.png" alt="Logo" class="rounded-circle")
                         div(class="row")
-                            div #{User.name} #{User.surname}
+                            each user in User
+                                div #{user.name} #{user.surname}
             div(class="row Nav_Posts")
                 div(class="col-md-auto")
                     ul(class="nav text-center  flex-column")
