@@ -5,8 +5,8 @@ html(lang="ru")
         title Проектная деятельность
         meta(charset="utf-8")
         link(rel="shortcut icon" type="image/png" href="Images/Favicon.png")
-        link(href="server.css" rel="stylesheet" type="text/css")
-        link(rel="stylesheet" href="bootstrap-4.4.1-dist/css/bootstrap.min.css")
+        link(href="Main_folder/server.css" rel="stylesheet" type="text/css")
+        link(rel="stylesheet" href="Main_folder/bootstrap-4.4.1-dist/css/bootstrap.min.css")
     body.container-fluid
         div.container-fluid
             div.row
@@ -28,7 +28,7 @@ html(lang="ru")
                         div(class="row")
                             img(src="Images/Logo.png" alt="Logo" class="rounded-circle")
                         div(class="row")
-                            div #{User.name} #{User.surname}
+                            
             div(class="row Nav_Posts")
                 div(class="col-md-auto")
                     ul(class="nav text-center  flex-column")
@@ -39,18 +39,7 @@ html(lang="ru")
                         li(class="nav-item")
                             a(class="btn btn-primary btn-lg" href="/Team") Список участников
                 div(class="col text-center Posts")
-                    each post in toRenderPosts 
-                        div(class="renderedPosts container-fluid")
-                            div(class="row")
-                                div(class="col col-md-auto")
-                                    img(src="Images/Logo.png" alt="Logo" class="rounded-circle")
-                                div(class="col")
-                                    div(class="row Author col-md-auto") #{post.author}
-                                    div(class="row col-md-auto") #{post.date}
-                                    div(class="row postContent container-fluid col-md-auto") #{post.content}
-                            div(class="row divpostimg") 
-                                - var imgclass = "data:image/png;base64,"+ Myimg64
-                                img(src=imgclass class="rounded-circle rounded mx-auto d-block img-fluid postimg")
+                   
             div(class="row AboutTeam_Site")
                 .col
                     div(class="row container-fluid AddInfo")
